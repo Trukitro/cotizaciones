@@ -131,6 +131,27 @@ a { color: var(--accent-blue); }
   cursor: not-allowed;
 }
 
+/* Trust bar */
+.trust-bar {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-card);
+}
+
+.trust-bar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 32px;
+  padding: 16px 24px;
+}
+
+.trust-item {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
 /* Services */
 .services { padding: 48px 0 72px; border-top: 1px solid var(--border); }
 
