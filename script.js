@@ -1,46 +1,10 @@
-// Trukitro — Cotizador de servicios
+// EtchTechnologies — Cotizador de servicios
 // Cálculo de rango de precios client-side + envío a Supabase y EmailJS.
-
-const SERVICES = [
-  {
-    id: "automatizacion",
-    label: "Automatización de Procesos",
-    desc: "Scripts y sistemas que eliminan tareas manuales repetitivas.",
-    min: 300,
-    max: 1200,
-  },
-  {
-    id: "bases_datos",
-    label: "Arquitectura de Bases de Datos",
-    desc: "Diseño, integración y migración de bases de datos.",
-    min: 400,
-    max: 1500,
-  },
-  {
-    id: "desarrollo",
-    label: "Desarrollo Local y Web",
-    desc: "Apps de escritorio modernas y plataformas web a la medida.",
-    min: 600,
-    max: 3000,
-  },
-  {
-    id: "integracion",
-    label: "Integración de Sistemas",
-    desc: "Conexión de APIs y plataformas para un ecosistema fluido.",
-    min: 350,
-    max: 1400,
-  },
-];
-
-const currencyFmt = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-  maximumFractionDigits: 0,
-});
+// SERVICES, currencyFmt y tierForService vienen de services-data.js (cargado antes que este archivo).
 
 function renderServiceCheckboxes() {
   const list = document.getElementById("services-list");
-  list.innerHTML = SERVICES.map(
+  list.innerHTML = window.SERVICES.map(
     (s) => `
     <label class="checkbox-item">
       <input type="checkbox" name="servicio" value="${s.id}" />
@@ -48,7 +12,7 @@ function renderServiceCheckboxes() {
         <span class="checkbox-item-title">${s.label}</span>
         <span class="checkbox-item-desc">${s.desc}</span>
       </span>
-      <span class="checkbox-item-price">${currencyFmt.format(s.min)} - ${currencyFmt.format(s.max)}</span>
+      <span class="checkbox-item-tier" title="Nivel de inversión referencial">${window.tierForService(s)}</span>
     </label>`
   ).join("");
 
@@ -59,8 +23,20 @@ function getSelectedServices() {
   const checked = Array.from(
     document.querySelectorAll('input[name="servicio"]:checked')
   ).map((el) => el.value);
-  return SERVICES.filter((s) => checked.includes(s.id));
+  return window.SERVICES.filter((s) => checked.includes(s.id));
 }
+
+function preselectServices(ids) {
+  document.querySelectorAll('input[name="servicio"]').forEach((el) => {
+    el.checked = ids.includes(el.value);
+  });
+  updateEstimate();
+  document.getElementById("cotizador").scrollIntoView({ behavior: "smooth" });
+}
+
+document.addEventListener("preselect-services", (event) => {
+  preselectServices(event.detail.ids || []);
+});
 
 function updateEstimate() {
   const selected = getSelectedServices();
@@ -73,7 +49,7 @@ function updateEstimate() {
 
   const min = selected.reduce((sum, s) => sum + s.min, 0);
   const max = selected.reduce((sum, s) => sum + s.max, 0);
-  estimateValue.textContent = `${currencyFmt.format(min)} - ${currencyFmt.format(max)}`;
+  estimateValue.textContent = `${window.currencyFmt.format(min)} - ${window.currencyFmt.format(max)}`;
 }
 
 function getEstimateText() {
@@ -81,7 +57,7 @@ function getEstimateText() {
   if (selected.length === 0) return "";
   const min = selected.reduce((sum, s) => sum + s.min, 0);
   const max = selected.reduce((sum, s) => sum + s.max, 0);
-  return `${currencyFmt.format(min)} - ${currencyFmt.format(max)}`;
+  return `${window.currencyFmt.format(min)} - ${window.currencyFmt.format(max)}`;
 }
 
 function setStatus(message, type) {

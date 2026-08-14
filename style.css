@@ -249,10 +249,10 @@ input:focus, textarea:focus {
   margin-top: 2px;
 }
 
-.checkbox-item-price {
+.checkbox-item-tier {
   color: var(--accent-blue);
-  font-size: 0.82rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  opacity: 0.75;
   white-space: nowrap;
 }
 
