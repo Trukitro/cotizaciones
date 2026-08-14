@@ -5,10 +5,10 @@
   --border: #202634;
   --text: #e8eaed;
   --text-muted: #8b93a1;
-  --accent-blue: #5b8cf7;
-  --accent-blue-hover: #7ba2fa;
-  --accent-green: #2ea043;
-  --accent-green-soft: rgba(46, 160, 67, 0.15);
+  --accent-blue: #00c2cb;
+  --accent-blue-hover: #40d1d8;
+  --accent-green: #4c80b8;
+  --accent-green-soft: rgba(0, 74, 153, 0.18);
   --danger: #e5534b;
   --radius: 10px;
 }
@@ -51,9 +51,17 @@ a { color: var(--accent-blue); }
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: var(--accent-blue);
+}
+
+.brand-icon {
+  height: 28px;
+  width: auto;
 }
 
 .nav-cta {
@@ -79,13 +87,19 @@ a { color: var(--accent-blue); }
   display: inline-block;
   background: var(--accent-green-soft);
   color: var(--accent-green);
-  border: 1px solid rgba(46, 160, 67, 0.35);
+  border: 1px solid rgba(0, 74, 153, 0.4);
   border-radius: 999px;
   padding: 6px 16px;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   margin-bottom: 24px;
+}
+
+.hero-icon {
+  height: 96px;
+  width: auto;
+  margin-bottom: 16px;
 }
 
 .hero h1 {
@@ -709,4 +723,11 @@ input:focus, textarea:focus {
   text-align: center;
   color: var(--text-muted);
   font-size: 0.85rem;
+}
+
+.footer-icon {
+  height: 16px;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 4px;
 }
