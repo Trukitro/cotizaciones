@@ -167,6 +167,234 @@ a { color: var(--accent-blue); }
   margin: 0;
 }
 
+/* Demos */
+.demos { padding: 48px 0 72px; border-top: 1px solid var(--border); }
+
+.demos-sub {
+  text-align: center;
+  color: var(--text-muted);
+  margin-top: -24px;
+  margin-bottom: 40px;
+}
+
+.demo-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-bottom: 20px;
+}
+
+.demo-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.demo-panel-header h3 { margin: 0; font-size: 1.1rem; }
+.demo-icon { font-size: 1.3rem; }
+
+.demo-desc {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin: 8px 0 20px;
+}
+
+.demo-result {
+  min-height: 1.4em;
+  color: var(--accent-green);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 12px 0 0;
+}
+
+/* Demo: automatización */
+.demo-steps {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.demo-steps li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  color: var(--text);
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.demo-step-check { color: var(--text-muted); }
+
+.demo-steps li.done {
+  color: var(--text-muted);
+  text-decoration: line-through;
+  opacity: 0.65;
+}
+
+.demo-steps li.done .demo-step-check { color: var(--accent-green); }
+
+/* Demo: bases de datos */
+.db-diagram {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+  display: block;
+  margin: 0 auto 12px;
+}
+
+.db-box rect {
+  fill: var(--bg);
+  stroke: var(--border);
+  stroke-width: 1.5;
+  transition: stroke 0.2s ease;
+}
+
+.db-box { cursor: pointer; }
+.db-box:focus { outline: none; }
+.db-box:focus rect, .db-box.selected rect { stroke: var(--accent-blue); stroke-width: 2; }
+
+.db-box-title {
+  fill: var(--text);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.db-box-cols {
+  fill: var(--text-muted);
+  font-size: 11px;
+}
+
+.db-connection {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.db-connection.visible { opacity: 1; }
+
+.db-connection line {
+  stroke: var(--accent-blue);
+  stroke-width: 2;
+}
+
+.db-connection text {
+  fill: var(--accent-blue);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Demo: integración */
+.integration-flow { margin-bottom: 20px; }
+
+.flow-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.flow-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  min-width: 96px;
+  transition: border-color 0.3s ease;
+}
+
+.flow-node .flow-icon { font-size: 1.4rem; }
+.flow-node .flow-label { font-size: 0.75rem; color: var(--text-muted); }
+
+.flow-node.received { border-color: var(--accent-green); }
+
+.flow-connector {
+  position: relative;
+  width: 60px;
+  height: 2px;
+  background: var(--border);
+}
+
+.flow-connector .flow-dot {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  opacity: 0;
+}
+
+.flow-connector.active .flow-dot {
+  animation: flow-travel-x 0.5s ease forwards;
+}
+
+@keyframes flow-travel-x {
+  0% { left: 0; opacity: 1; }
+  90% { opacity: 1; }
+  100% { left: calc(100% - 8px); opacity: 0; }
+}
+
+.flow-destinations {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.flow-branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.flow-connector-vertical {
+  width: 2px;
+  height: 32px;
+}
+
+.flow-connector-vertical .flow-dot {
+  top: 0;
+  left: 50%;
+  margin-top: 0;
+  margin-left: -4px;
+}
+
+.flow-connector-vertical.active .flow-dot {
+  animation: flow-travel-y 0.5s ease forwards;
+}
+
+@keyframes flow-travel-y {
+  0% { top: 0; opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: calc(100% - 8px); opacity: 0; }
+}
+
+.demo-payload {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  font-size: 0.82rem;
+  color: var(--accent-green);
+  overflow-x: auto;
+  margin: 0;
+}
+
 /* Portfolio */
 .portfolio { padding: 48px 0 72px; border-top: 1px solid var(--border); }
 

@@ -59,6 +59,100 @@
     </div>
   </section>
 
+  <section class="demos" id="demos">
+    <div class="container">
+      <h2>Míralo en acción</h2>
+      <p class="demos-sub">Tres mini-demos para que sientas cómo funciona cada servicio, no solo que lo leas.</p>
+
+      <div class="demo-panel" id="demo-automatizacion">
+        <div class="demo-panel-header">
+          <span class="demo-icon" aria-hidden="true">⚙️</span>
+          <h3>Automatización de Procesos</h3>
+        </div>
+        <p class="demo-desc">Así se ve eliminar una tarea manual repetitiva.</p>
+        <ul class="demo-steps" id="automation-steps">
+          <li data-step="1"><span class="demo-step-check" aria-hidden="true">○</span> Descargar reporte de ventas</li>
+          <li data-step="2"><span class="demo-step-check" aria-hidden="true">○</span> Abrir Excel y limpiar los datos</li>
+          <li data-step="3"><span class="demo-step-check" aria-hidden="true">○</span> Copiar a la plantilla mensual</li>
+          <li data-step="4"><span class="demo-step-check" aria-hidden="true">○</span> Enviar por correo al equipo</li>
+        </ul>
+        <button class="btn btn-primary demo-trigger" id="automation-trigger" type="button">▶ Automatizar</button>
+        <p class="demo-result" id="automation-result" aria-live="polite"></p>
+      </div>
+
+      <div class="demo-panel" id="demo-bases-datos">
+        <div class="demo-panel-header">
+          <span class="demo-icon" aria-hidden="true">🗄️</span>
+          <h3>Arquitectura de Bases de Datos</h3>
+        </div>
+        <p class="demo-desc">Haz clic en dos tablas para ver cómo se relacionan.</p>
+        <svg class="db-diagram" viewBox="0 0 500 240" role="group" aria-label="Diagrama de relaciones entre tablas">
+          <g class="db-connection" data-pair="clientes-pedidos">
+            <line x1="180" y1="50" x2="320" y2="50" />
+            <text x="250" y="42" text-anchor="middle">1 — N</text>
+          </g>
+          <g class="db-connection" data-pair="pedidos-productos">
+            <line x1="400" y1="80" x2="330" y2="165" />
+            <text x="392" y="130" text-anchor="middle">N — N</text>
+          </g>
+          <g class="db-box" data-id="clientes" tabindex="0" role="button" aria-label="Tabla Clientes">
+            <rect x="20" y="20" width="160" height="60" rx="8" />
+            <text x="100" y="45" text-anchor="middle" class="db-box-title">Clientes</text>
+            <text x="100" y="62" text-anchor="middle" class="db-box-cols">id, nombre, email</text>
+          </g>
+          <g class="db-box" data-id="pedidos" tabindex="0" role="button" aria-label="Tabla Pedidos">
+            <rect x="320" y="20" width="160" height="60" rx="8" />
+            <text x="400" y="45" text-anchor="middle" class="db-box-title">Pedidos</text>
+            <text x="400" y="62" text-anchor="middle" class="db-box-cols">id, cliente_id, fecha</text>
+          </g>
+          <g class="db-box" data-id="productos" tabindex="0" role="button" aria-label="Tabla Productos">
+            <rect x="170" y="150" width="160" height="60" rx="8" />
+            <text x="250" y="175" text-anchor="middle" class="db-box-title">Productos</text>
+            <text x="250" y="192" text-anchor="middle" class="db-box-cols">id, nombre, precio</text>
+          </g>
+        </svg>
+        <p class="demo-result" id="db-hint" aria-live="polite"></p>
+      </div>
+
+      <div class="demo-panel" id="demo-integracion">
+        <div class="demo-panel-header">
+          <span class="demo-icon" aria-hidden="true">🔗</span>
+          <h3>Integración de Sistemas</h3>
+        </div>
+        <p class="demo-desc">Así viaja un evento entre tus sistemas cuando están conectados.</p>
+        <div class="integration-flow" id="integration-flow">
+          <div class="flow-top">
+            <div class="flow-node" data-node="source">
+              <span class="flow-icon" aria-hidden="true">📊</span>
+              <span class="flow-label">Google Sheets</span>
+            </div>
+            <div class="flow-connector" data-connector="source-hub"><span class="flow-dot"></span></div>
+            <div class="flow-node" data-node="hub">
+              <span class="flow-icon" aria-hidden="true">🔌</span>
+              <span class="flow-label">Webhook</span>
+            </div>
+          </div>
+          <div class="flow-destinations">
+            <div class="flow-branch">
+              <div class="flow-connector flow-connector-vertical" data-connector="hub-slack"><span class="flow-dot"></span></div>
+              <div class="flow-node" data-node="slack"><span class="flow-icon" aria-hidden="true">💬</span><span class="flow-label">Slack</span></div>
+            </div>
+            <div class="flow-branch">
+              <div class="flow-connector flow-connector-vertical" data-connector="hub-email"><span class="flow-dot"></span></div>
+              <div class="flow-node" data-node="email"><span class="flow-icon" aria-hidden="true">✉️</span><span class="flow-label">Email</span></div>
+            </div>
+            <div class="flow-branch">
+              <div class="flow-connector flow-connector-vertical" data-connector="hub-db"><span class="flow-dot"></span></div>
+              <div class="flow-node" data-node="db"><span class="flow-icon" aria-hidden="true">🗄️</span><span class="flow-label">Base de datos</span></div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary demo-trigger" id="integration-trigger" type="button">▶ Simular evento</button>
+        <pre class="demo-payload" id="integration-payload" hidden></pre>
+      </div>
+    </div>
+  </section>
+
   <section class="portfolio" id="portafolio">
     <div class="container">
       <h2>Proyectos reales</h2>
@@ -123,6 +217,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="config.js" onerror="console.warn('config.js no encontrado: copia config.example.js a config.js y llena tus valores.')"></script>
 <script src="portfolio.js"></script>
+<script src="demos.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
