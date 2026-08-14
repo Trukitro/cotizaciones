@@ -18,12 +18,22 @@ Sitio estático (HTML/CSS/JS vanilla, sin build step), publicado en GitHub Pages
 ```
 index.html          Landing + formulario de cotización
 style.css            Estilos (tema oscuro minimalista)
+services-data.js       Fuente única de servicios/precios (SERVICES, tierForService)
 script.js             Calculadora de precios + envío a Supabase/EmailJS
+portfolio.js            Datos y render de la sección "Proyectos reales"
 config.example.js  Plantilla de configuración (sin valores reales)
 config.js               Configuración real — NO se sube al repo (.gitignore)
 schema.sql              Tabla + políticas RLS para Supabase
 .github/workflows/keep-alive.yml   Ping periódico para evitar pausa del proyecto Free de Supabase
 ```
+
+## Agregar capturas al portafolio
+
+La sección "Proyectos reales" (`portfolio.js`) arranca solo con texto — cada tarjeta tiene un `.portfolio-media` vacío (`display: none` en `style.css`) reservado para cuando tengas una captura o GIF de cada proyecto. Para activarlo en un proyecto:
+
+1. Agrega la imagen en una carpeta `assets/` (ej. `assets/pulseguard.png`).
+2. En `portfolio.js`, agrega `image: "assets/pulseguard.png"` al objeto del proyecto correspondiente en `PORTFOLIO`.
+3. En `style.css`, quita el `display: none` de `.portfolio-media` y dale un `background-image` o cambia el render en `portfolio.js` para insertar un `<img>` dentro de `.portfolio-media`.
 
 ## Setup local
 
