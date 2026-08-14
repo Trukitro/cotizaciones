@@ -161,6 +161,27 @@
     </div>
   </section>
 
+  <section class="diagnostic" id="diagnostico">
+    <div class="container">
+      <h2>¿Por dónde empezar?</h2>
+      <p class="diagnostic-sub">3 preguntas rápidas y te recomendamos qué pedir. Totalmente opcional — puedes ir directo al cotizador si ya sabes qué necesitas.</p>
+      <div class="diagnostic-card">
+        <div class="diagnostic-progress" id="diagnostic-progress">
+          <span class="diagnostic-dot" data-dot="0"></span>
+          <span class="diagnostic-dot" data-dot="1"></span>
+          <span class="diagnostic-dot" data-dot="2"></span>
+        </div>
+        <div id="diagnostic-question"></div>
+        <div class="diagnostic-result" id="diagnostic-result" hidden>
+          <p class="diagnostic-result-label">Te recomendamos empezar por:</p>
+          <p class="diagnostic-result-services" id="diagnostic-result-services"></p>
+          <button class="btn btn-primary" id="diagnostic-cta" type="button">Ver mi cotización</button>
+          <button class="diagnostic-restart" id="diagnostic-restart" type="button">↺ Empezar de nuevo</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="quoter" id="cotizador">
     <div class="container">
       <h2>Cotiza tu proyecto</h2>
@@ -218,6 +239,7 @@
 <script src="config.js" onerror="console.warn('config.js no encontrado: copia config.example.js a config.js y llena tus valores.')"></script>
 <script src="portfolio.js"></script>
 <script src="demos.js"></script>
+<script src="diagnostic.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
