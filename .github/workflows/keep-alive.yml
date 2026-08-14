@@ -1,0 +1,18 @@
+name: Keep Supabase Alive
+
+on:
+  schedule:
+    - cron: "0 12 */4 * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase REST endpoint
+        env:
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          curl -sf -o /dev/null -w "HTTP %{http_code}\n" \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            "https://icisukcehosnyyndzcem.supabase.co/rest/v1/"

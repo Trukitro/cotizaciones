@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trukitro — Cotiza tu Proyecto</title>
+<meta name="description" content="Trukitro (Rikion) — Ingeniería y automatización de software. Cotiza en tiempo real: automatización de procesos, bases de datos, desarrollo local/web e integración de sistemas." />
+<link rel="icon" href="data:," />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <span class="brand">TRUKITRO</span>
+    <a class="nav-cta" href="#cotizador">Cotizar</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <span class="badge">INGENIERÍA &amp; AUTOMATIZACIÓN</span>
+      <h1>TRUKITRO</h1>
+      <p class="hero-sub">Soluciones tecnológicas a tu medida</p>
+      <p class="hero-desc">
+        Ingeniería de software especializada en optimización y automatización de procesos:
+        arquitectura de datos, aplicaciones a la medida y herramientas que eliminan el trabajo manual.
+      </p>
+      <a class="btn btn-primary" href="#cotizador">Cotiza en tiempo real</a>
+    </div>
+  </section>
+
+  <section class="services" id="servicios">
+    <div class="container">
+      <h2>Servicios</h2>
+      <div class="services-grid">
+        <article class="service-card">
+          <span class="service-icon" aria-hidden="true">⚙️</span>
+          <h3>Automatización de Procesos</h3>
+          <p>Eliminación de tareas manuales repetitivas mediante scripts y sistemas inteligentes que optimizan el tiempo y los recursos de tu negocio u operación.</p>
+        </article>
+        <article class="service-card">
+          <span class="service-icon" aria-hidden="true">🗄️</span>
+          <h3>Arquitectura de Bases de Datos</h3>
+          <p>Diseño, mantenimiento, integración y migración de bases de datos para asegurar un manejo de información rápido, estructurado y seguro.</p>
+        </article>
+        <article class="service-card">
+          <span class="service-icon" aria-hidden="true">💻</span>
+          <h3>Desarrollo Local y Web</h3>
+          <p>Creación de aplicaciones de escritorio modernas y plataformas web adaptadas a tus necesidades específicas, desde herramientas internas hasta soluciones robustas.</p>
+        </article>
+        <article class="service-card">
+          <span class="service-icon" aria-hidden="true">🔗</span>
+          <h3>Integración de Sistemas</h3>
+          <p>Conexión de APIs, servicios y plataformas existentes para garantizar que tu ecosistema tecnológico se comunique de manera fluida y sin interrupciones.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="quoter" id="cotizador">
+    <div class="container">
+      <h2>Cotiza tu proyecto</h2>
+      <p class="quoter-sub">Selecciona los servicios que necesitas y obtén un estimado al instante.</p>
+
+      <form id="quote-form" class="quote-form" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="nombre">Nombre *</label>
+            <input type="text" id="nombre" name="nombre" required autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" autocomplete="tel" />
+          </div>
+        </div>
+
+        <fieldset class="field services-field">
+          <legend>Servicios *</legend>
+          <div id="services-list" class="checkbox-list"></div>
+        </fieldset>
+
+        <div class="field">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos brevemente sobre tu proyecto..."></textarea>
+        </div>
+
+        <div class="estimate-box" id="estimate-box">
+          <span class="estimate-label">Precio estimado</span>
+          <span class="estimate-value" id="estimate-value">Selecciona al menos un servicio</span>
+          <span class="estimate-note">Estimado referencial. El precio final depende del alcance real del proyecto.</span>
+        </div>
+
+        <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+
+        <button type="submit" class="btn btn-primary" id="submit-btn">Enviar cotización</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; <span id="year"></span> Trukitro (Rikion) — Ingeniería &amp; Automatización</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="config.js" onerror="console.warn('config.js no encontrado: copia config.example.js a config.js y llena tus valores.')"></script>
+<script src="script.js"></script>
+</body>
+</html>
